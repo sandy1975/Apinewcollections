@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "0f1d7c95-fdba-4cb9-ac3b-a349527ba499",
+		"name": "Testing API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all API's",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7e19045-c9a3-4e62-a903-0ece0547c7c2",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ability",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2afabbf-d347-4f52-824d-a40d295af655",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody)\r",
+							"tests[\"Check count value\"] = jsonData.count === 293;\r",
+							"tests[\"Check name value is stench\"] = jsonData.results[0].name === 'stench';"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/ability",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"ability"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
